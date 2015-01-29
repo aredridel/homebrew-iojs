@@ -35,7 +35,9 @@ class Iojs < Formula
       cd buildpath/"npm_install" do
         # Patch node-gyp until github.com/TooTallNate/node-gyp/pull/564 is resolved
         # Patch extracted from https://github.com/iojs/io.js/commit/82227f3
-        patch :DATA
+        p = Patch.create(:p1, :DATA)
+        p.path = Pathname.new(__FILE__).expand_path
+        p.apply
         system "./configure", "--prefix=#{libexec}/npm"
         system "make", "install"
       end
