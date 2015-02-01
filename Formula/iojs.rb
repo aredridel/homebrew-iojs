@@ -2,6 +2,7 @@ class Iojs < Formula
   homepage "https://iojs.org/"
   url "https://iojs.org/dist/v1.0.4/iojs-v1.0.4.tar.gz"
   sha256 "59f4d34eafe70b1e96efba7491556db9ec449e5774352885a73ff41bad7c2965"
+  revision 1
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
@@ -77,6 +78,7 @@ class Iojs < Formula
     npm_root = node_modules/"npm"
     npmrc = npm_root/"npmrc"
     npmrc.atomic_write("prefix = #{HOMEBREW_PREFIX}\n")
+    system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install","-g", "npm@latest"
   end
 
   def caveats
@@ -84,9 +86,18 @@ class Iojs < Formula
 
     if build.with? "npm"
       s += <<-EOS.undent
-        If you update npm itself, do NOT use the npm update command.
-        The upstream-recommended way to update npm is:
+        npm has been installed and updated to latest. To update run
           npm install -g npm@latest
+
+        You can install global npm packages with
+          npm install -g <package>
+
+        They will install into the global node_modiles directory
+          /usr/local/lib/node_modules
+
+        Do NOT use the npm update command with global modules.
+        The upstream-recommended way to update global modules is:
+          npm install -g <package>@latest
       EOS
     else
       s += <<-EOS.undent
