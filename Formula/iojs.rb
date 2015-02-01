@@ -78,7 +78,7 @@ class Iojs < Formula
     npm_root = node_modules/"npm"
     npmrc = npm_root/"npmrc"
     npmrc.atomic_write("prefix = #{HOMEBREW_PREFIX}\n")
-    system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install","-g", "npm@latest"
+    system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "-g", "npm@latest"
   end
 
   def caveats
