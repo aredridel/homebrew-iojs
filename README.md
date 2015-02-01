@@ -1,5 +1,5 @@
 # homebrew-iojs
-A Homebrew formula for https://iojs.org.  Includes the following patches to `npm`:
+A Homebrew formula for https://iojs.org.  Includes the following `iojs` compatibility patches to `npm`:
 
 - https://github.com/iojs/io.js/commit/82227f3 deps: make node-gyp fetch tarballs from iojs.org
 
@@ -10,7 +10,18 @@ A Homebrew formula for https://iojs.org.  Includes the following patches to `npm
 ## How do I install this formula?
 `brew install aredridel/homebrew-iojs/iojs`
 
-Or `brew tap aredridel/homebrew-iojs` and then `brew install iojs`.
+Or `brew tap aredridel/homebrew-iojs` and then `brew install aredridel/iojs/iojs`.
 
 ## Documentation
+
+Since there is an existing `iojs` formula in the offical homebrew repository, you have to reference the fully-qualified formula name when interacting with this formula.  e.g.
+```
+brew install aredridel/iojs/ioj
+brew upgrade aredridel/iojs/ioj
+brew info aredridel/iojs/ioj
+brew uninstall aredridel/iojs/ioj
+brew unlink aredridel/iojs/ioj
+brew link aredridel/iojs/ioj
+```
+
 `brew help`, `man brew` or check [Homebrew's documentation](https://github.com/Homebrew/homebrew/tree/master/share/doc/homebrew#readme).
