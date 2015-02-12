@@ -16,12 +16,12 @@ Or `brew tap aredridel/homebrew-iojs` and then `brew install aredridel/iojs/iojs
 
 Since there is an existing `iojs` formula in the offical homebrew repository, you have to reference the fully-qualified formula name when interacting with this formula.  e.g.
 ```
-brew install aredridel/iojs/ioj
-brew upgrade aredridel/iojs/ioj
-brew info aredridel/iojs/ioj
-brew uninstall aredridel/iojs/ioj
-brew unlink aredridel/iojs/ioj
-brew link aredridel/iojs/ioj
+brew install aredridel/iojs/iojs
+brew upgrade aredridel/iojs/iojs
+brew info aredridel/iojs/iojs
+brew uninstall aredridel/iojs/iojs
+brew unlink aredridel/iojs/iojs
+brew link aredridel/iojs/iojs
 ```
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://github.com/Homebrew/homebrew/tree/master/share/doc/homebrew#readme).
