@@ -12,8 +12,8 @@ class Iojs < Formula
   depends_on :python => :build
 
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-2.4.1.tgz"
-    sha256 "b2570efc785bf57c3d100631d5244012ee34ff4400d809810ea344a7eb111705"
+    url "https://registry.npmjs.org/npm/-/npm-2.6.0.tgz"
+    sha256 "b769ba6f3471ee2ddb1f75cfed568b10dbc23fa63dafce792945e8f18de5286f"
   end
 
   def install
