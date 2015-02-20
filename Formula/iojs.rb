@@ -1,7 +1,7 @@
 class Iojs < Formula
   homepage "https://iojs.org/"
-  url "https://iojs.org/dist/v1.2.0/iojs-v1.2.0.tar.gz"
-  sha256 "33666fce914ca57ef60e2e29d7b02cd64c99a8609287a9227da2087ab9c65d9d"
+  url "https://iojs.org/dist/v1.3.0/iojs-v1.3.0.tar.xz"
+  sha256 "0c20c0d26d8c8e8814f02fd20fb5e57098f747692cddfd7453ffae973ebcebda"
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
@@ -151,4 +151,3 @@ index 6f72e6a..ebc4e57 100644
          , badDownload = false
          , extractCount = 0
          , gunzip = zlib.createGunzip()
-
