@@ -1,7 +1,7 @@
 class Iojs < Formula
   homepage "https://iojs.org/"
-  url "https://iojs.org/dist/v1.2.0/iojs-v1.2.0.tar.gz"
-  sha256 "33666fce914ca57ef60e2e29d7b02cd64c99a8609287a9227da2087ab9c65d9d"
+  url "https://iojs.org/dist/v1.3.0/iojs-v1.3.0.tar.gz"
+  sha256 "eb652fb854274e04b4a309b1b8cd4d5bb3eb45882e9442bacb129d247e9de021"
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
@@ -12,8 +12,8 @@ class Iojs < Formula
   depends_on :python => :build
 
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-2.4.1.tgz"
-    sha256 "b2570efc785bf57c3d100631d5244012ee34ff4400d809810ea344a7eb111705"
+    url "https://registry.npmjs.org/npm/-/npm-2.6.0.tgz"
+    sha256 "b769ba6f3471ee2ddb1f75cfed568b10dbc23fa63dafce792945e8f18de5286f"
   end
 
   def install
@@ -77,7 +77,6 @@ class Iojs < Formula
     npm_root = node_modules/"npm"
     npmrc = npm_root/"npmrc"
     npmrc.atomic_write("prefix = #{HOMEBREW_PREFIX}\n")
-    system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "-g", "npm@latest"
   end
 
   def caveats
@@ -124,6 +123,7 @@ class Iojs < Formula
       assert (HOMEBREW_PREFIX/"bin/npm").exist?, "npm must exist"
       assert (HOMEBREW_PREFIX/"bin/npm").executable?, "npm must be executable"
       system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "npm@latest"
+      system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "buffertools"
     end
   end
 end
