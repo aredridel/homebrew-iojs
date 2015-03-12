@@ -10,7 +10,7 @@ A Homebrew formula for https://iojs.org.  Includes the following `iojs` compatib
 ## How do I install this formula?
 `brew install aredridel/homebrew-iojs/iojs`
 
-Or `brew tap aredridel/homebrew-iojs` and then `brew install aredridel/iojs/iojs`.
+Or `brew tap aredridel/iojs` and then `brew install aredridel/iojs/iojs`.
 
 ## Documentation
 
