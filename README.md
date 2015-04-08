@@ -1,9 +1,11 @@
 # homebrew-iojs
-A Homebrew formula for https://iojs.org.  Includes the following `iojs` compatibility patches to `npm`:
+A Homebrew formula for https://iojs.org.
 
-- https://github.com/iojs/io.js/commit/82227f3 deps: make node-gyp fetch tarballs from iojs.org
+Mimicks the execution of `node-gyp install`:
 
-> the patch is still compatible with joyent node: http://logs.libuv.org/npm/2015-01-28#21:53:34.823
+- Avoid re-downloading the iojs sources
+- Avoid patching node-gyp
+- Fully compatible with nodejs
 
 **NOTE**:  Work on the official homebrew `iojs` formula is ongoing. Follow [the progress here](https://github.com/Homebrew/homebrew/pull/36369)!
 
