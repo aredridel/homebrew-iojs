@@ -1,7 +1,7 @@
 class Iojs < Formula
   homepage "https://iojs.org/"
-  url "https://iojs.org/dist/v2.0.0/iojs-v2.0.0.tar.xz"
-  sha256 "4f61318361b752382f13cad631548677f7ec2ba21b3dc4c3cca2369a7e253baa"
+  url "https://iojs.org/dist/v2.0.1/iojs-v2.0.1.tar.xz"
+  sha256 "aa9f1d385e79689cb0c8311a607a726daafd6027428f1a33b2a16b2d08815290"
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
