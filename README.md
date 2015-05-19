@@ -8,7 +8,7 @@ A Homebrew formula for https://iojs.org.  Includes the following `iojs` compatib
 **NOTE**:  Work on the official homebrew `iojs` formula is ongoing. Follow [the progress here](https://github.com/Homebrew/homebrew/pull/36369)!
 
 ## How do I install this formula?
-`brew install aredridel/homebrew-iojs/iojs`
+`brew install aredridel/iojs/iojs`
 
 Or `brew tap aredridel/iojs` and then `brew install aredridel/iojs/iojs`.
 
