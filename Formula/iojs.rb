@@ -1,7 +1,7 @@
 class Iojs < Formula
   homepage "https://iojs.org/"
-  url "https://iojs.org/dist/v2.0.2/iojs-v2.0.2.tar.xz"
-  sha256 "afab3752cf9143a13784cd9d9c38b0ff5fd4aa77dffded2f5c3742c42b9743a2"
+  url "https://iojs.org/dist/v2.1.0/iojs-v2.1.0.tar.xz"
+  sha256 "b9bb7fb626a0f0f0babb3b042f61eba55ff0dec4645682fbb36b5bab13d5dd29"
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
@@ -12,8 +12,8 @@ class Iojs < Formula
   depends_on :python => :build
 
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-2.9.0.tgz"
-    sha256 "a4d1434e934eaf08d985dbe3b70e0d456fb6866828afc91e99b3aac286fca055"
+    url "https://registry.npmjs.org/npm/-/npm-2.10.1.tgz"
+    sha256 "5b57c177bcaba628b04aba22f1112f409a0344c74653eb8c9185df24a97ac01b"
   end
 
   def install
