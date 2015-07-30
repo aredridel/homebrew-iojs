@@ -1,7 +1,7 @@
 class Iojs < Formula
   homepage "https://iojs.org/"
-  url "https://iojs.org/dist/v2.5.0/iojs-v2.5.0.tar.xz"
-  sha256 "0ad1bca083cbdf9a67fc55e1b1d47d8cc3bc6473e4a3af083c9f67ace3e7e75e"
+  url "https://iojs.org/dist/v2.4.0/iojs-v2.4.0.tar.xz"
+  sha256 "0081746e2e4b49c95ddbbaa6394960af2c719465c3ddab3bee58637b574eca45"
 
   conflicts_with "node", :because => "io.js includes a symlink named node for compatibility."
 
@@ -12,8 +12,8 @@ class Iojs < Formula
   depends_on :python => :build
 
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-2.13.2.tgz"
-    sha256 "e9714e307b3ab13630ab0e32de35405e522802ba755f502edca81c4c6b60bec8"
+    url "https://registry.npmjs.org/npm/-/npm-2.13.0.tgz"
+    sha256 "734d970d74748e4172d1458e68ef047037d60a7ade4e68a0bcf1788582360dec"
   end
 
   def install
@@ -33,6 +33,11 @@ class Iojs < Formula
       ENV["NPM_CONFIG_LOGLEVEL"] = "verbose"
 
       cd buildpath/"npm_install" do
+        # Patch node-gyp until github.com/TooTallNate/node-gyp/pull/564 is resolved
+        # Patch extracted from https://github.com/iojs/io.js/commit/82227f3
+        p = Patch.create(:p1, :DATA)
+        p.path = Pathname.new(__FILE__).expand_path
+        p.apply
         system "./configure", "--prefix=#{libexec}/npm"
         system "make", "install"
       end
@@ -122,3 +127,27 @@ class Iojs < Formula
     end
   end
 end
+
+__END__
+diff --git a/node_modules/node-gyp/lib/install.js b/node_modules/node-gyp/lib/install.js
+index 6f72e6a..ebc4e57 100644
+--- a/node_modules/node-gyp/lib/install.js
++++ b/node_modules/node-gyp/lib/install.js
+@@ -39,7 +39,7 @@ function install (gyp, argv, callback) {
+     }
+   }
+
+-  var distUrl = gyp.opts['dist-url'] || gyp.opts.disturl || 'http://nodejs.org/dist'
++  var distUrl = gyp.opts['dist-url'] || gyp.opts.disturl || 'https://iojs.org/dist'
+
+
+   // Determine which node dev files version we are installing
+@@ -185,7 +185,7 @@ function install (gyp, argv, callback) {
+
+       // now download the node tarball
+       var tarPath = gyp.opts['tarball']
+-      var tarballUrl = tarPath ? tarPath : distUrl + '/v' + version + '/node-v' + version + '.tar.gz'
++      var tarballUrl = tarPath ? tarPath : distUrl + '/v' + version + '/iojs-v' + version + '.tar.gz'
+         , badDownload = false
+         , extractCount = 0
+         , gunzip = zlib.createGunzip()
