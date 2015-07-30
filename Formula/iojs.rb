@@ -37,6 +37,16 @@ class Iojs < Formula
         system "make", "install"
       end
 
+      # Pre-download the sources for node-gyp until github.com/TooTallNate/node-gyp/pull/564 is resolved
+      if File.directory?("#{ENV['HOME']}/.node-gyp/#{version}")
+        system "rm", "-rf", "#{ENV['HOME']}/.node-gyp/#{version}"
+      end
+      system "mkdir", "-p", "#{ENV['HOME']}/.node-gyp/#{version}"
+      system "cp", "-a", "#{buildpath}/.", "#{ENV['HOME']}/.node-gyp/#{version}"
+      # mimick node-gyp version install. The number '9' has not changed since June 2012:
+      # https://github.com/TooTallNate/node-gyp/commit/569a9b2b4f55faa4347448058f6c4b2e791c3934
+      File.open("#{ENV['HOME']}/.node-gyp/#{version}/installVersion", 'w') {|f| f.write("9") }
+
       if build.with? "completion"
         bash_completion.install \
           buildpath/"npm_install/lib/utils/completion.sh" => "npm"
