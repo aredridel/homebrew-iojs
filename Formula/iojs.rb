@@ -137,7 +137,7 @@ index 6f72e6a..ebc4e57 100644
      }
    }
 
--  var distUrl = gyp.opts['dist-url'] || gyp.opts.disturl || 'http://nodejs.org/dist'
+-  var distUrl = gyp.opts['dist-url'] || gyp.opts.disturl || 'https://nodejs.org/dist'
 +  var distUrl = gyp.opts['dist-url'] || gyp.opts.disturl || 'https://iojs.org/dist'
 
 
