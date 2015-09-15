@@ -36,5 +36,5 @@ $ brew update
 $ brew install node-alt
 ```
 
-Node, this is just an alias to this tap's node formula and will install in place of the offical homebrew formula.
+This is just an alias to this tap's node formula and will install in place of the offical homebrew node formula.
 
