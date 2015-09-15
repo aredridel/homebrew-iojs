@@ -1,4 +1,5 @@
 # homebrew-iojs
+
 A Homebrew formula for https://iojs.org.  Includes the following `iojs` compatibility patches to `npm`:
 
 - https://github.com/iojs/io.js/commit/82227f3 deps: make node-gyp fetch tarballs from iojs.org
@@ -25,3 +26,15 @@ brew link aredridel/iojs/iojs
 ```
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://github.com/Homebrew/homebrew/tree/master/share/doc/homebrew#readme).
+
+## Node 4+
+
+Now including a Node 4+ formula!
+
+```
+$ brew update
+$ brew install node-alt
+```
+
+Node, this is just an alias to this tap's node formula and will install in place of the offical homebrew formula.
+
