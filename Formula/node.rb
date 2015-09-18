@@ -1,10 +1,16 @@
-# Note that x.even are stable releases, x.odd are devel releases
 class Node < Formula
-  desc "Platform built on Chrome's JavaScript runtime to build network applications"
+  desc "Platform built on the V8 JavaScript runtime to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v4.0.0/node-v4.0.0.tar.gz"
-  sha256 "e110e5a066f3a6fe565ede7dd66f3727384b9b5c5fbf46f8db723d726e2f5900"
-  head "https://github.com/nodejs/node.git", :branch => "master"
+  url "https://nodejs.org/dist/v4.1.0/node-v4.1.0.tar.gz"
+  sha256 "453005f64ee529f7dcf1237eb27ee2fa2415c49f5c9e7463e8b71fba61c5b408"
+  head "https://github.com/nodejs/node.git"
+
+  bottle do
+    sha256 "7d58243777c4133034254d1756de907efaf5e12bcf5eb94c11119f4f0306a815" => :el_capitan
+    sha256 "15689cc474a79975eaa6d791b24e6fa021494839c9b691ac307d74acefc5f834" => :yosemite
+    sha256 "a7a7d37c6e5088ed3f58b867d4d246851715d3a4f2f3b4b3c40cc7452ff6728c" => :mavericks
+    sha256 "374f3c5b576e4173590b8413e9941df121a84f46bd48161fc758e1f7d42e0402" => :mountain_lion
+  end
 
   option "with-debug", "Build with debugger hooks"
   option "without-npm", "npm will not be installed"
@@ -25,18 +31,15 @@ class Node < Formula
   end
 
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-2.14.3.tgz"
-    sha256 "19755e14283977f713bb5115aea17d383cb0ca3f90db7c9f15146aad15f24c9b"
+    url "https://registry.npmjs.org/npm/-/npm-2.14.4.tgz"
+    sha256 "c8b602de5d51f956aa8f9c34d89be38b2df3b7c25ff6588030eb8224b070db27"
   end
 
   def install
     args = %W[--prefix=#{prefix} --without-npm]
     args << "--debug" if build.with? "debug"
     args << "--with-intl=system-icu" if build.with? "icu4c"
-
-    if build.with? "openssl"
-      args << "--shared-openssl"
-    end
+    args << "--shared-openssl" if build.with? "openssl"
 
     system "./configure", *args
     system "make", "install"
@@ -133,6 +136,7 @@ class Node < Formula
       assert (HOMEBREW_PREFIX/"bin/npm").exist?, "npm must exist"
       assert (HOMEBREW_PREFIX/"bin/npm").executable?, "npm must be executable"
       system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "npm@latest"
+      system "#{HOMEBREW_PREFIX}/bin/npm", "--verbose", "install", "bignum"
     end
   end
 end
